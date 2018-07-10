@@ -10,14 +10,16 @@ ENV CORENLP_ARCHIVE=stanford-corenlp-full-${CORENLP_ARCHIVE_VERSION}.zip \
     CORENLP_SHA1_PATH=corenlp.sha1
 
 RUN wget http://nlp.stanford.edu/software/$CORENLP_ARCHIVE \
-  && echo "$CORENLP_SHA1SUM $CORENLP_ARCHIVE" > corenlp.sha1 \
-  && sha1sum -c corenlp.sha1 \
+  #&& echo "$CORENLP_SHA1SUM $CORENLP_ARCHIVE" > corenlp.sha1 \
+  #&& sha1sum -c corenlp.sha1 \
   && unzip $CORENLP_ARCHIVE \
   && mv $(basename ../$CORENLP_ARCHIVE .zip) $CORENLP_PATH \
   && rm $CORENLP_ARCHIVE \
+  && wget http://nlp.stanford.edu/software/$CORENLP_ARCHIVE_EN \  
   && unzip $CORENLP_ARCHIVE_EN \
   && mv $(basename ../$CORENLP_ARCHIVE_EN .zip) $CORENLP_PATH \
   && rm $CORENLP_ARCHIVE_EN \
+  && wget http://nlp.stanford.edu/software/$CORENLP_ARCHIVE_EN \  
   && unzip $CORENLP_ARCHIVE_EN_KBP \
   && mv $(basename ../$CORENLP_ARCHIVE_EN_KBP .zip) $CORENLP_PATH \
   && rm $CORENLP_ARCHIVE_EN_KBP \
